@@ -6,7 +6,7 @@ from itertools import imap
 import sys
 import argparse
 import re
-#import apt
+import apt
 import redis
 
 # Check if sudo
@@ -44,21 +44,21 @@ if args.port != None:
 database_number = args.number
 
 # Check if php5-redis is installed
-#cache = apt.Cache()
-#pkg_name = 'php5-redis'
-#
-#pkg = cache[pkg_name]
-#if cache[pkg_name].is_installed:
-#    print '[x] php5-redis package installed!'
-#else:
-#    cache.update()
-#    pkg.mark_install()
-#
-#    try:
-#        cache.commit()
-#    except Exception, arg:
-#        print 'Can\'t found php5-redis package installed, do the installation right now... It could take a while.'
-#        print >> sys.stderr, 'Sorry, package installation failed [{err}]'.format(err=str(arg))
+cache = apt.Cache()
+pkg_name = 'php5-redis'
+
+pkg = cache[pkg_name]
+if cache[pkg_name].is_installed:
+    print '[x] php5-redis package installed!'
+else:
+    cache.update()
+    pkg.mark_install()
+
+    try:
+        cache.commit()
+    except Exception, arg:
+        print 'Can\'t found php5-redis package installed, do the installation right now... It could take a while.'
+        print >> sys.stderr, 'Sorry, package installation failed [{err}]'.format(err=str(arg))
 
 ## Redis operando
 # Get list of directories under session path:
