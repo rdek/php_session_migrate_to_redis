@@ -1,1 +1,5 @@
 redis == (2.10.5)
+hiredis == (0.2.0)
+apt-xapian-index == (0.45)
+argparse == (1.2.1)
+python-apt == (0.9.3.5ubuntu2)
